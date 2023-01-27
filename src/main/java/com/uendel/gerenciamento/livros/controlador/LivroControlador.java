@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uendel.gerenciamento.livros.dto.LivroDTO;
 import com.uendel.gerenciamento.livros.dto.MessageResponseDTO;
-import com.uendel.gerenciamento.livros.entidade.Livro;
-import com.uendel.gerenciamento.livros.repositorio.LivroRepositorio;
 import com.uendel.gerenciamento.livros.servico.LivroServico;
 
 import jakarta.validation.Valid;

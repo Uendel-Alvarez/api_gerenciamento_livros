@@ -18,11 +18,10 @@ public class AutorDTO {
 	private Long id;
 	
     @NotBlank
-    @Size(max = 200)
+    @Size(max = 500)
 	private String nome;
 	
 	@NotNull
-	@Size(max = 100)
 	private Integer idade;
 	
 	
