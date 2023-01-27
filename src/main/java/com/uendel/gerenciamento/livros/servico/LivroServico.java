@@ -1,5 +1,7 @@
 package com.uendel.gerenciamento.livros.servico;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,13 @@ public class LivroServico {
 		return MessageResponseDTO.builder().mensagem("Livro criado com Id"
 				+ salvadoLivro.getId())
 				.build();
+	}
+
+
+	public LivroDTO buscaPorId(Long id) {
+		Optional<Livro> optinalLivro = livroRepositorio.findById(id);
+		return livroMapear.toDTO(optinalLivro.get());
+		
 	}
 	
 }
