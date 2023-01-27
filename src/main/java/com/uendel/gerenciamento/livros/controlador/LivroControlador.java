@@ -6,10 +6,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.uendel.gerenciamento.livros.dto.LivroDTO;
 import com.uendel.gerenciamento.livros.dto.MessageResponseDTO;
 import com.uendel.gerenciamento.livros.entidade.Livro;
 import com.uendel.gerenciamento.livros.repositorio.LivroRepositorio;
 import com.uendel.gerenciamento.livros.servico.LivroServico;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/livros")
@@ -25,9 +28,9 @@ public class LivroControlador {
 
 
 	@PostMapping
-	public MessageResponseDTO create(@RequestBody Livro livro) {
+	public MessageResponseDTO create(@RequestBody @Valid LivroDTO livroDTO) {
 		
-		return livroServico.create(livro);
+		return livroServico.create(livroDTO);
 	}
 
 	
