@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.uendel.gerenciamento.livros.dto.LivroDTO;
 import com.uendel.gerenciamento.livros.dto.MessageResponseDTO;
 import com.uendel.gerenciamento.livros.entidade.Livro;
+import com.uendel.gerenciamento.livros.excecao.LivroNaoEncontradoExcecao;
 import com.uendel.gerenciamento.livros.mapeamento.LivroMapear;
 import com.uendel.gerenciamento.livros.repositorio.LivroRepositorio;
 
@@ -35,9 +36,11 @@ public class LivroServico {
 	}
 
 
-	public LivroDTO buscaPorId(Long id) {
-		Optional<Livro> optinalLivro = livroRepositorio.findById(id);
-		return livroMapear.toDTO(optinalLivro.get());
+	public LivroDTO buscaPorId(Long id) throws LivroNaoEncontradoExcecao {
+		Livro livro = livroRepositorio.findById(id)
+				.orElseThrow( () -> new LivroNaoEncontradoExcecao(id));
+		
+		return livroMapear.toDTO(livro);
 		
 	}
 	

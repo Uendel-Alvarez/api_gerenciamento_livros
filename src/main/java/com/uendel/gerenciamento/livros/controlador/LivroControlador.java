@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uendel.gerenciamento.livros.dto.LivroDTO;
 import com.uendel.gerenciamento.livros.dto.MessageResponseDTO;
+import com.uendel.gerenciamento.livros.excecao.LivroNaoEncontradoExcecao;
 import com.uendel.gerenciamento.livros.servico.LivroServico;
 
 import jakarta.validation.Valid;
@@ -34,7 +35,7 @@ public class LivroControlador {
 	}
 
 	@GetMapping("/{id}")
-	public LivroDTO buscaPorId(@PathVariable Long id) {
+	public LivroDTO buscaPorId(@PathVariable Long id) throws LivroNaoEncontradoExcecao {
 		return livroServico.buscaPorId(id);
 	}
 }
